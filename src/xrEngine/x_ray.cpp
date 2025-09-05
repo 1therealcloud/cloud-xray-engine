@@ -1248,7 +1248,6 @@ void CApplication::LoadStage()
 		max_load_stage			= 14;
 	LoadDraw					();
 }
-
 void CApplication::LoadSwitch	()
 {
 }
@@ -1259,8 +1258,7 @@ void CApplication::OnFrame	( )
 	Engine.Event.OnFrame			();
 	g_SpatialSpace->update			();
 	g_SpatialSpacePhysic->update	();
-	if (g_pGameLevel)				
-		g_pGameLevel->SoundEvent_Dispatch	( );
+	if (g_pGameLevel)				g_pGameLevel->SoundEvent_Dispatch	( );
 }
 
 void CApplication::Level_Append		(LPCSTR folder)

@@ -104,23 +104,23 @@ void CRadioactiveZone::UpdateWorkload					(u32	dt)
 {
 	if (IsEnabled() && GameID() != eGameIDSingle)
 	{	
-		OBJECT_INFO_VEC_IT it;
 		Fvector pos; 
 		XFORM().transform_tiny(pos,CFORM()->getSphere().P);
-		for(it = m_ObjectInfoMap.begin(); m_ObjectInfoMap.end() != it; ++it) 
+
+		for(auto& it : m_ObjectInfoMap)
 		{
-			if( !(*it).object->getDestroy() && smart_cast<CActor*>((*it).object))
+			if( !(it.object->getDestroy() && smart_cast<CActor*>(it.object)))
 			{
 				//=====================================
 				NET_Packet	l_P;
 				l_P.write_start();
 				l_P.read_start();
 
-				float dist			= (*it).object->Position().distance_to(pos);
-				float power			= Power(dist,nearest_shape_radius(it))*dt/1000;
+				float dist			= it.object->Position().distance_to(pos);
+				float power			= Power(dist,nearest_shape_radius(&it))*dt/1000;
 
 				SHit				HS;
-				HS.GenHeader		(GE_HIT, (*it).object->ID());
+				HS.GenHeader		(GE_HIT, it.object->ID());
 				HS.whoID			= ID();
 				HS.weaponID			= ID();
 				HS.dir				= Fvector().set(0,0,0);
@@ -132,7 +132,7 @@ void CRadioactiveZone::UpdateWorkload					(u32	dt)
 				
 				HS.Write_Packet_Cont(l_P);
 
-				(*it).object->OnEvent(l_P, HS.PACKET_TYPE);
+				it.object->OnEvent(l_P, HS.PACKET_TYPE);
 				//=====================================
 			};
 		}

@@ -601,11 +601,16 @@ bool CLocatorAPI::Recurse		(const char* path)
 
 	_findclose		( hFile );
 
-	FFVec buffer(rec_files);
+	u32				count = rec_files.size();
+	_finddata_t		*buffer = (_finddata_t*)_alloca(count*sizeof(_finddata_t));
+	std::copy		(&*rec_files.begin(), &*rec_files.begin() + count, buffer);
+
+//.	std::copy		(&*rec_files.begin(),&*rec_files.end(),buffer);
+
 	rec_files.clear_not_free();
-	std::sort		(buffer.begin(), buffer.end(), pred_str_ff);
-	for (FFIt I = buffer.begin(), E = buffer.end(); I != E; ++I)
-		ProcessOne	(path, &*I);
+	std::sort		(buffer, buffer + count, pred_str_ff);
+	for (_finddata_t *I = buffer, *E = buffer + count; I != E; ++I)
+		ProcessOne	(path,I);
 
 	// insert self
     if (path&&path[0])\
@@ -1003,21 +1008,13 @@ int CLocatorAPI::file_list(FS_FileSet& dest, LPCSTR path, u32 flags, LPCSTR mask
 				}
 				if (!bOK)			continue;
 			}
-			std::pair<FS_FileSet::iterator,bool> pr = dest.insert(FS_File());
-
-//			xr_string fn			= entry_begin;
-			// insert file entry
-			if (flags&FS_ClampExt)
-				pr.first->name			= EFS.ChangeFileExt(entry_begin, "");
+			xr_string fn;
+			if (flags & FS_ClampExt)
+				fn = EFS.ChangeFileExt(entry_begin, "");
 			else
-				pr.first->name			= entry_begin;
-
-
-			u32 fl = (entry.vfs!=0xffffffff?FS_File::flVFS:0);
-			pr.first->size = entry.size_real;
-			pr.first->time_write = entry.modif;
-			pr.first->attrib = fl;
-//			std::pair<FS_FileSet::iterator,bool> pr = dest.insert(FS_File(fn,entry.size_real,entry.modif,fl));
+				fn = entry_begin;
+			u32 fl = (entry.vfs != 0xffffffff ? FS_File::flVFS : 0);
+			dest.insert(FS_File(fn, entry.size_real, entry.modif, fl));
 		} else {
 			// folder
 			if ((flags&FS_ListFolders) == 0)	continue;
@@ -1136,7 +1133,7 @@ void CLocatorAPI::file_from_archive	(IReader *&R, LPCSTR fname, const file &desc
 	string512					temp;
 	xr_sprintf					(temp, sizeof(temp),"%s:%s",*A.path,fname);
 
-#ifdef FS_DEBUG
+#ifdef DEBUG
 	register_file_mapping		(ptr,sz,temp);
 #endif // DEBUG
 
@@ -1152,7 +1149,7 @@ void CLocatorAPI::file_from_archive	(IReader *&R, LPCSTR fname, const file &desc
 	R							= xr_new<CTempReader>(dest,desc.size_real,0);
 	UnmapViewOfFile				(ptr);
 
-#ifdef FS_DEBUG
+#ifdef DEBUG
 	unregister_file_mapping		(ptr,sz);
 #endif // DEBUG
 }

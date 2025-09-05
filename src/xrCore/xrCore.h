@@ -81,7 +81,7 @@
 #include <stdarg.h>
 #include <math.h>
 #include <string.h>
-#include <typeinfo.h>
+#include <typeinfo>
 //#include <process.h>
 
 #ifndef DEBUG
@@ -300,7 +300,6 @@ public:
 	string64	UserName;
 	string64	CompName;
 	string512	Params;
-	DWORD		dwFrame;
 
 public:
 	void		_initialize	(LPCSTR ApplicationName, LogCallback cb=0, BOOL init_fs=TRUE, LPCSTR fs_fname=0);

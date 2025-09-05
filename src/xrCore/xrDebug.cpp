@@ -7,7 +7,7 @@
 #include "resource.h"
 #include "dbghelp.h"
  
-#include "dxerr.h"
+#include "../3rd party/DxErr/src/dxerr.h"
 
 #ifdef __BORLANDC__
 	#include "d3d9.h"
@@ -123,7 +123,7 @@ LPCSTR xrDebug::error2string	(long code)
 
 #ifdef _M_AMD64
 #else
-	result				= DXGetErrorDescription	(code);
+	result				= DXGetErrorString(code);
 #endif
 	if (0==result) 
 	{
