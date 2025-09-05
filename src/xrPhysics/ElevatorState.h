@@ -20,7 +20,7 @@ private:
 		u32	  time;
 	};
 
-static SEnertionState m_etable[CElevatorState::clbNoState][CElevatorState::clbNoState];
+static SEnertionState m_etable[clbNoState][clbNoState];
 
 IClimableObject	*m_ladder;	
 CPHCharacter	*m_character;
@@ -28,7 +28,7 @@ Fvector			m_start_position;//for depart state
 u32				m_start_time;
 public: 
 						CElevatorState					();
-			void		PhTune							(float step)																			;
+			void		PhTune							(float step);
 			void		SetCharacter					(CPHCharacter *character);
 			void		SetElevator						(IClimableObject* climable);
 			void		EvaluateState					();
