@@ -1,21 +1,19 @@
-X-Ray Engine 1.6 sources (T-6638)
+X-Ray Engine 1.6 sources
 ========================
-## Изменения по сравнению с оригинальным движком:
-*  BugTrap заменён на уже собраный (https://github.com/bchavez/BugTrap)
-*  Сборка под 2022 студией
-*  Теперь наличие DXSDK на ПК не требуется, он подключён через NuGet
-## Сборка:
-  1. склонировать репозиторий
-  2. открыть engine.sln
-  3. собрать под конфигурацией Release | Win32 (Остальные не настроены)
-  4. забрать собраный двиг в папке engine_build\binaries
+## Зміни порівняно з оригінальним рушієм:
+*  BugTrap замінений на вже зібраний (https://github.com/bchavez/BugTrap).
+*  Збірка на 2022 студії. 
+*  Наявність DXSDK на ПК не обов'язкова, він підключений через NuGet.
 
-## Changes compared to the original engine:
-* BugTrap replaced with already built (https://github.com/bchavez/BugTrap)
-* Build on Visual Studio 2022
-* DXSDK is no longer required on PC, it is now connected via NuGet.
-## Build:
-  1. clone the repository
-  2. open engine.sln
-  3. build Release | Win32 configuration (the others are not configured)
-  4. get the built engine in the engine_build\binaries folder
+## збірка:
+  1. Клонуєм репозиторій (git clone https://github.com/1therealcloud/cloud-xray-engine.git).
+  2. Відкриваєм cloud-xray-engine/src/engine.sln.
+  3. Вибираєм кофігурацію Release | Win32 (Інші не налаштовані).
+  4. Збираєм рушій настиснувши Build - Build Solution (Ctrl + Shift + B).
+  5. Зібраний рушій буде в папці engine_build\binaries\Win32\Release.
+  6. Файли з розширенням ".pdb" не обов'язкові.
+  7. Потрібено поставити в папку "bin" BugTrap. Він знаходится в папці sdk/binaries/BugTrap.dll.
+
+При встановленні Visual Studio 2022 потрібно встановити
+Desktop development with C++. (Всі стандартні компоненти), та доповнення до цього компоненту:
+C++ MFC for latest v143 bulid tools (x86 & x64)
