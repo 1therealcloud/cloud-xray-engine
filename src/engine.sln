@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{89F6A7EE-3BBE-45D3-A8A8-5D9366CD987B}"
 EndProject
@@ -70,6 +70,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DxErr", "3rd party\DxErr\Dx
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xrRender", "xrRender", "{E097CA84-50E9-4E63-A804-3F24AEC54AFD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BugTrap", "..\..\..\cloud-xray-engine\src\3rd party\bugtrap\bugtrap\BugTrap.vcxproj", "{E8CF1ADA-264A-4127-86C2-FD7057D3792C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "..\..\..\cloud-xray-engine\src\3rd party\bugtrap\zlib\zlib.vcxproj", "{B5919129-6716-499D-9516-04EC34C86CDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Win32 = Release|Win32
@@ -134,6 +138,10 @@ Global
 		{61D4856F-FA82-4F02-BB88-909DDFB1FE74}.Release|Win32.Build.0 = Release|Win32
 		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release|Win32.ActiveCfg = Release|Win32
 		{7A19CBB1-FF90-44BD-9112-C2A269D9C280}.Release|Win32.Build.0 = Release|Win32
+		{E8CF1ADA-264A-4127-86C2-FD7057D3792C}.Release|Win32.ActiveCfg = Release|Win32
+		{E8CF1ADA-264A-4127-86C2-FD7057D3792C}.Release|Win32.Build.0 = Release|Win32
+		{B5919129-6716-499D-9516-04EC34C86CDF}.Release|Win32.ActiveCfg = Release|Win32
+		{B5919129-6716-499D-9516-04EC34C86CDF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +166,8 @@ Global
 		{CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{61D4856F-FA82-4F02-BB88-909DDFB1FE74} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{7A19CBB1-FF90-44BD-9112-C2A269D9C280} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
+		{E8CF1ADA-264A-4127-86C2-FD7057D3792C} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
+		{B5919129-6716-499D-9516-04EC34C86CDF} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A95BB62-794A-40E9-8C12-5C2928541498}

@@ -1,6 +1,6 @@
 /*
  * This is a part of the BugTrap package.
- * Copyright (c) 2005-2007 IntelleSoft.
+ * Copyright (c) 2005-2009 IntelleSoft.
  * All rights reserved.
  *
  * Description: BugTrap simplified dialog.
@@ -49,13 +49,10 @@ static void SimpleDlg_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify
 	switch (id)
 	{
 	case IDC_MAILTO:
-		SendReport(hwnd);
+		MailTempReportEx(hwnd);
 		break;
 	case IDC_SUBMIT_BUG:
-		if (*g_szSupportHost && g_nSupportPort)
-			SubmitReport(hwnd);
-		else if (*g_szSupportEMail)
-			SendReport(hwnd);
+		SubmitTempReport(hwnd);
 		break;
 	case IDC_MORE:
 		EndDialog(hwnd, TRUE);
@@ -120,6 +117,11 @@ static void InitControls(HWND hwnd)
 	{
 		if (*g_szSupportEMail == _T('\0'))
 			ShowWindow(hwndMailTo, SW_HIDE);
+	}
+
+	if (g_dwFlags & BTF_HIDEMOREBUTTON)
+	{
+		ShowWindow(hwndMore, FALSE);
 	}
 
 	HWND hwndFocus = IsWindowEnabled(hwndSubmitBug) ? hwndSubmitBug : hwndClose;
