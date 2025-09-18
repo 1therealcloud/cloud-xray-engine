@@ -238,7 +238,7 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Unicode Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='.NET Debug|Win32'">
-    <TargetName>$(ProjectName)DN</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <LinkKeyFile>$(ProjectDir)res\KeyPair.snk</LinkKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='.NET Debug|x64'">
